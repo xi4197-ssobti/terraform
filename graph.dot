@@ -1,0 +1,24 @@
+digraph {
+	compound = "true"
+	newrank = "true"
+	subgraph "root" {
+		"[root] github_repository.example (orphan)" [label = "github_repository.example", shape = "box"]
+		"[root] github_repository.github-repo (expand)" [label = "github_repository.github-repo", shape = "box"]
+		"[root] github_repository.repo (expand)" [label = "github_repository.repo", shape = "box"]
+		"[root] provider[\"registry.terraform.io/integrations/github\"]" [label = "provider[\"registry.terraform.io/integrations/github\"]", shape = "diamond"]
+		"[root] var.is-test" [label = "var.is-test", shape = "note"]
+		"[root] var.repo_name" [label = "var.repo_name", shape = "note"]
+		"[root] github_repository.example (orphan)" -> "[root] provider[\"registry.terraform.io/integrations/github\"]"
+		"[root] github_repository.github-repo (expand)" -> "[root] provider[\"registry.terraform.io/integrations/github\"]"
+		"[root] github_repository.github-repo (expand)" -> "[root] var.is-test"
+		"[root] github_repository.github-repo (expand)" -> "[root] var.repo_name"
+		"[root] github_repository.repo (expand)" -> "[root] provider[\"registry.terraform.io/integrations/github\"]"
+		"[root] github_repository.repo (expand)" -> "[root] var.is-test"
+		"[root] github_repository.repo (expand)" -> "[root] var.repo_name"
+		"[root] provider[\"registry.terraform.io/integrations/github\"] (close)" -> "[root] github_repository.example (orphan)"
+		"[root] provider[\"registry.terraform.io/integrations/github\"] (close)" -> "[root] github_repository.github-repo (expand)"
+		"[root] provider[\"registry.terraform.io/integrations/github\"] (close)" -> "[root] github_repository.repo (expand)"
+		"[root] root" -> "[root] provider[\"registry.terraform.io/integrations/github\"] (close)"
+	}
+}
+
